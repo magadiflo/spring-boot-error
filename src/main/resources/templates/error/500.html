@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Error 500</title>
+</head>
+<body>
+	<h1>¡Ha ocurrido un error!</h1>
+	<small>Estos objetos <b>error, message, status, timestamp, trace</b> son objetos que ya vienen en la plantilla</small>
+	<p th:text="${error}"></p>
+	<p th:text="${message}"></p>
+	<p th:text="${status}"></p>
+	<p th:text="${timestamp}"></p>
+	<pre th:text="${trace}"></pre>
+</body>
+</html>

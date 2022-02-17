@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Error 404</title>
+</head>
+<body>
+	<h1>¡Página no encontrada!</h1>
+	<small>Estos objetos <b>error, status, timestamp, path</b> son objetos que ya vienen en la plantilla</small>
+	<p th:text="${error}"></p>
+	<p th:text="${status}"></p>
+	<p th:text="${timestamp}"></p>
+	<p th:text="${path}"></p>
+</body>
+</html>
