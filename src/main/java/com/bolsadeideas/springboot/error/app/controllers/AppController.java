@@ -16,5 +16,13 @@ public class AppController {
 		//Cualquier error 500 mostrará el archivo /error/500.html
 		return "index";
 	}
+	
+	@GetMapping("/cadena")
+	public String cadena() {
+		//Forzando a que muestre el error NumberFormatException
+		Integer valor = Integer.parseInt("hola");
+		
+		return  "cadena";
+	}
 
 }
