@@ -37,10 +37,14 @@ public class AppController {
 	
 	@GetMapping("/ver/{id}")
 	public String ver(@PathVariable("id") Integer id, Model model) {
-		Usuario usuario = this.usuarioService.obtenerPorId(id);
-		if(usuario == null) {
-			throw new UsuarioNoEncontradoException(id.toString());
-		}
+		//Usuario usuario = this.usuarioService.obtenerPorId(id);
+		//if(usuario == null) {
+		//	throw new UsuarioNoEncontradoException(id.toString());
+		//}
+		
+		//El código comentado de arriba es lo mismo que este de abajo, solo que aquí usamos las características de Java 8
+		Usuario usuario = this.usuarioService.obtenerPorIdOptional(id).orElseThrow(()-> new UsuarioNoEncontradoException(id.toString()));
+		//
 		model.addAttribute("titulo", "Detalle usuario: ".concat(usuario.getNombre()));
 		model.addAttribute("usuario", usuario);
 		return "ver";
