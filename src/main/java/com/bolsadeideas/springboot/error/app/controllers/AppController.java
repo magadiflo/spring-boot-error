@@ -1,10 +1,19 @@
 package com.bolsadeideas.springboot.error.app.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.bolsadeideas.springboot.error.app.models.domain.Usuario;
+import com.bolsadeideas.springboot.error.app.services.IUsuarioService;
 
 @Controller
 public class AppController {
+	
+	@Autowired
+	private IUsuarioService usuarioService;
 
 	@GetMapping("/index")
 	public String index() {
@@ -24,5 +33,14 @@ public class AppController {
 		
 		return  "cadena";
 	}
+	
+	@GetMapping("/ver/{id}")
+	public String ver(@PathVariable("id") Integer id, Model model) {
+		Usuario usuario = this.usuarioService.obtenerPorId(id);
+		model.addAttribute("titulo", "Detalle usuario: ".concat(usuario.getNombre()));
+		model.addAttribute("usuario", usuario);
+		return "ver";
+	}
+	
 
 }

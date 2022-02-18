@@ -2,7 +2,6 @@ package com.bolsadeideas.springboot.error.app.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -31,8 +30,14 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
 	@Override
 	public Usuario obtenerPorId(Integer id) {
-		return this.lista.stream().filter(usuario -> usuario.getId().equals(id))
-				.collect(Collectors.toList()).get(0);
+		Usuario usuario = null;		
+		for(Usuario u : this.lista) {
+			if(u.getId().equals(id)) {
+				usuario = u;
+				break;
+			}
+		}		
+		return usuario;
 	}
 
 }
